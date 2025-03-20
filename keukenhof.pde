@@ -48,6 +48,40 @@ void keyPressed() {
   }
 }
 
+
+
+//////////////////////////////////////////////////////////////////////////
+/////////////////            DRAW THE SKY               //////////////////
+//////////////////////////////////////////////////////////////////////////
+
+void drawSky() {
+  // inspired by: https://processing.org/examples/lineargradient.html
+  color c1 = #90C8FF, c2 = #FDFFBF;
+  for (int i = 0; i <= 400; i++) {
+    stroke(lerpColor(c1, c2, map(i, 0, 400, 0, 1)));
+    line(0, i, width, i);
+  }
+}
+
+
+//////////////////////////////////////////////////////////////////////////
+/////////////////            DRAW THE SUN               //////////////////
+//////////////////////////////////////////////////////////////////////////
+
+void drawSun() {
+  noStroke();
+  fill(#F6FF0A, 300);
+  circle(width / 2, 400, 100);
+  
+  // I used this trick to create the sun halo, starts from biggest halo and increases the opacity
+  int opacity = 10;
+  for (int i = 1000; i >= 100; i -= 60) {
+    fill(#F6FF0A, opacity++);
+    circle(width / 2, 400, i);
+  }
+}
+
+
 //////////////////////////////////////////////////////////////////////////
 /////////////    DRAW THE FLOWER THE FIELDS & STREET    //////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -153,37 +187,6 @@ void drawDashedLine(int startX, int y, int segmentWidth, int segmentHeight, int 
   fill(lineColor);
   for (int i = startX; i < width; i += 25) {
     rect(5 + i, y, segmentWidth, segmentHeight);
-  }
-}
-
-//////////////////////////////////////////////////////////////////////////
-/////////////////            DRAW THE SKY               //////////////////
-//////////////////////////////////////////////////////////////////////////
-
-void drawSky() {
-  // inspired by: https://processing.org/examples/lineargradient.html
-  color c1 = #90C8FF, c2 = #FDFFBF;
-  for (int i = 0; i <= 400; i++) {
-    stroke(lerpColor(c1, c2, map(i, 0, 400, 0, 1)));
-    line(0, i, width, i);
-  }
-}
-
-
-//////////////////////////////////////////////////////////////////////////
-/////////////////            DRAW THE SUN               //////////////////
-//////////////////////////////////////////////////////////////////////////
-
-void drawSun() {
-  noStroke();
-  fill(#F6FF0A, 300);
-  circle(width / 2, 400, 100);
-  
-  // I used this trick to create the sun halo, starts from biggest halo and increases the opacity
-  int opacity = 10;
-  for (int i = 1000; i >= 100; i -= 60) {
-    fill(#F6FF0A, opacity++);
-    circle(width / 2, 400, i);
   }
 }
 
