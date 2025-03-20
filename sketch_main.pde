@@ -208,13 +208,8 @@ void drawWindmill() {
   fill(#504A4A);
   rect(baseX, baseY - towerHeight, towerWidth, towerHeight);
   
-  triangle(baseX - towerWidth / 3, baseY, 
-           baseX + towerWidth / 2, baseY - towerHeight * 0.2, 
-           baseX + towerWidth + towerWidth / 3, baseY);
-  
-  triangle(baseX, baseY - towerHeight * 0.1, 
-           baseX + towerWidth / 2, baseY - towerHeight * 0.2, 
-           baseX + towerWidth, baseY - towerHeight * 0.1);
+  triangle(baseX - 20, baseY, baseX + towerWidth / 2, towerHeight + 70, baseX + towerWidth + 20, baseY);
+  triangle(baseX, towerHeight + 100, baseX + towerWidth / 2, towerHeight + 70, baseX + towerWidth, towerHeight + 100);
   
   drawWindmillWindow(baseX, baseY);
   
