@@ -26,7 +26,6 @@ void drawScene() {
 
 //////////////////////////////////////////////////////////////////////////
 /////////////////       HANDLING KEYBOARD EVENTS        //////////////////
-/////////////////         THIS PART IS EXTRA            //////////////////
 //////////////////////////////////////////////////////////////////////////
 void keyPressed() {
   // Print the vector pdf by presing the P key
@@ -73,7 +72,7 @@ void drawSun() {
   fill(#F6FF0A, 300);
   circle(width / 2, 400, 100);
   
-  // I used this trick to create the sun halo, starts from biggest halo and increases the opacity
+  // I used this trick to create the sun halo, starts from biggest halo and increases the circle size and the opacity
   int opacity = 10;
   for (int i = 1000; i >= 100; i -= 60) {
     fill(#F6FF0A, opacity++);
@@ -148,6 +147,9 @@ void addSeparator(int y, int w, int h, boolean central) {
     float px = random(0, w);
     float py;
 
+    // Here, I used randomGaussian function to distribute noise arround a line
+    // The if statement check whether to apply it in the center or in the margin of the field
+    // Also, used constrain function to add a boundary for the generated dots 
     if (central) {
       py = constrain(centerY + randomGaussian() * 4, y, y + h);
     } else {
@@ -206,8 +208,13 @@ void drawWindmill() {
   fill(#504A4A);
   rect(baseX, baseY - towerHeight, towerWidth, towerHeight);
   
-  triangle(baseX - 20, baseY, baseX + towerWidth / 2, towerHeight + 70, baseX + towerWidth + 20, baseY);
-  triangle(baseX, towerHeight + 100, baseX + towerWidth / 2, towerHeight + 70, baseX + towerWidth, towerHeight + 100);
+  triangle(baseX - towerWidth / 3, baseY, 
+           baseX + towerWidth / 2, baseY - towerHeight * 0.2, 
+           baseX + towerWidth + towerWidth / 3, baseY);
+  
+  triangle(baseX, baseY - towerHeight * 0.1, 
+           baseX + towerWidth / 2, baseY - towerHeight * 0.2, 
+           baseX + towerWidth, baseY - towerHeight * 0.1);
   
   drawWindmillWindow(baseX, baseY);
   
