@@ -94,6 +94,7 @@ void drawFlowerLane(int x, int y, int w, int h, color laneColor) {
 ///////////////       ADD THE NOISE TO LOOK NATURAL        ///////////////
 //////////////////////////////////////////////////////////////////////////
 void addNoise(int x, int y, int w, int h, color c, int alphaValue) {
+  // This part is inspired from https://processing.org/examples/pointillism.html
   fill(c, alphaValue);
   noStroke();
   for (int i = 0; i < 1000; i++) {
@@ -102,7 +103,7 @@ void addNoise(int x, int y, int w, int h, color c, int alphaValue) {
 }
 
 
-// This separator add noise between the lanes
+// This add noise between the lanes
 void addSeparator(int y, int w, int h, boolean central) {
   fill(0, 50);
   noStroke();
