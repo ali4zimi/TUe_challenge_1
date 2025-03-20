@@ -161,6 +161,7 @@ void drawDashedLine(int startX, int y, int segmentWidth, int segmentHeight, int 
 //////////////////////////////////////////////////////////////////////////
 
 void drawSky() {
+  // inspired by: https://processing.org/examples/lineargradient.html
   color c1 = #90C8FF, c2 = #FDFFBF;
   for (int i = 0; i <= 400; i++) {
     stroke(lerpColor(c1, c2, map(i, 0, 400, 0, 1)));
